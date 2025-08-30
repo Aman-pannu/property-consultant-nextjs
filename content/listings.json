@@ -1,0 +1,77 @@
+[
+  {
+    "id": "1",
+    "title": "3\u2011Bed Family Home, Glen Waverley",
+    "meta": "$1.25m \u2014 580m\u00b2 block \u00b7 Walk to schools \u00b7 Renovated kitchen",
+    "badges": [
+      "New",
+      "Auction"
+    ],
+    "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop",
+    "suburb": "Glen Waverley",
+    "slug": "glen-waverley-3br",
+    "virtualTour": ""
+  },
+  {
+    "id": "2",
+    "title": "City Apartment with View, Docklands",
+    "meta": "$690k \u2014 2 bed \u00b7 2 bath \u00b7 Car space \u00b7 Resort amenities",
+    "badges": [
+      "For Sale",
+      "Private Treaty"
+    ],
+    "image": "https://images.unsplash.com/photo-1505691723518-36a5ac3b2d95?q=80&w=1200&auto=format&fit=crop",
+    "suburb": "Docklands",
+    "slug": "docklands-apt-view",
+    "virtualTour": ""
+  },
+  {
+    "id": "3",
+    "title": "Townhouse Near Uni, Bundoora",
+    "meta": "$820k \u2014 3 bed \u00b7 2.5 bath \u00b7 Low maintenance",
+    "badges": [
+      "Featured",
+      "Tenanted"
+    ],
+    "image": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1200&auto=format&fit=crop",
+    "suburb": "Bundoora",
+    "slug": "bundoora-townhouse",
+    "virtualTour": ""
+  },
+  {
+    "id": "4",
+    "title": "Renovated Cottage, Brunswick",
+    "meta": "$1.02m \u2014 2 bed \u00b7 1 bath \u00b7 Close to trams",
+    "badges": [
+      "Open Home"
+    ],
+    "image": "https://images.unsplash.com/photo-1597047084891-331b4bca5b1d?q=80&w=1200&auto=format&fit=crop",
+    "suburb": "Brunswick",
+    "slug": "brunswick-cottage",
+    "virtualTour": ""
+  },
+  {
+    "id": "5",
+    "title": "Modern Family Home, Point Cook",
+    "meta": "$980k \u2014 4 bed \u00b7 2 bath \u00b7 2 car",
+    "badges": [
+      "New"
+    ],
+    "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1200&auto=format&fit=crop",
+    "suburb": "Point Cook",
+    "slug": "point-cook-family",
+    "virtualTour": ""
+  },
+  {
+    "id": "6",
+    "title": "Beachside Unit, St Kilda",
+    "meta": "$750k \u2014 2 bed \u00b7 1 bath \u00b7 Walk to beach",
+    "badges": [
+      "For Sale"
+    ],
+    "image": "https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1200&auto=format&fit=crop",
+    "suburb": "St Kilda",
+    "slug": "st-kilda-beachside",
+    "virtualTour": ""
+  }
+]
