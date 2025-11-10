@@ -5,8 +5,8 @@ export default function Footer(){
       <div className="mx-auto max-w-7xl px-4 py-10 grid gap-8 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-2 font-bold text-xl">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="text-brand-600"><path d="M12 3l9 8h-3v9H6v-9H3l9-8z"/></svg>
-            Aman Realty
+            {/* <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="text-brand-600"><path d="M12 3l9 8h-3v9H6v-9H3l9-8z"/></svg> */}
+            @Reality
           </div>
           <p className="mt-3 text-slate-600">ABN 00 000 000 000</p>
           <p className="text-slate-600">123 Collins St, Melbourne VIC 3000</p>
@@ -37,7 +37,7 @@ export default function Footer(){
           </form>
         </div>
       </div>
-      <div className="border-t border-slate-200 py-6 text-center text-sm text-slate-500">© {new Date().getFullYear()} Aman Realty. All rights reserved.</div>
+      <div className="border-t border-slate-200 py-6 text-center text-sm text-slate-500">© {new Date().getFullYear()} @Reality. All rights reserved.</div>
     </footer>
   )
 }

@@ -1,5 +1,4 @@
-import { connectDb } from '@/lib/db'
-import Lead from '@/models/Lead'
+import { getSupabaseClient, normalizeLeadRow } from '@/lib/supabase'
 
 function toCsv(rows){
   if(!rows.length) return ''
@@ -9,18 +8,27 @@ function toCsv(rows){
 }
 
 export async function GET(){
-  await connectDb()
-  const items = await Lead.find({}).sort({ createdAt: -1 }).lean()
-  const rows = items.map(i => ({
-    createdAt: i.createdAt?.toISOString() || '',
-    name: i.name || '',
-    email: i.email || '',
-    phone: i.phone || '',
-    service: i.service || '',
-    stage: i.stage || '',
-    tags: (i.tags||[]).join('|'),
-    message: i.message || ''
-  }))
-  const csv = toCsv(rows)
-  return new Response(csv, { headers: { 'Content-Type': 'text/csv', 'Content-Disposition': 'attachment; filename="leads.csv"' } })
+  try{
+    const supabase = getSupabaseClient()
+    const { data, error } = await supabase.from('leads').select('*').order('created_at', { ascending: false })
+    if(error){
+      console.error(error)
+      return Response.json({ error: 'Server error' }, { status: 500 })
+    }
+    const rows = (data || []).map(normalizeLeadRow).map(i => ({
+      createdAt: i.createdAt || '',
+      name: i.name || '',
+      email: i.email || '',
+      phone: i.phone || '',
+      service: i.service || '',
+      stage: i.stage || '',
+      tags: (i.tags||[]).join('|'),
+      message: i.message || ''
+    }))
+    const csv = toCsv(rows)
+    return new Response(csv, { headers: { 'Content-Type': 'text/csv', 'Content-Disposition': 'attachment; filename="leads.csv"' } })
+  }catch(err){
+    console.error(err)
+    return Response.json({ error: 'Server error' }, { status: 500 })
+  }
 }

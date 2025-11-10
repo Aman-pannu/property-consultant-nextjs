@@ -7,7 +7,7 @@ export async function generateStaticParams(){
 }
 
 export async function generateMetadata({ params }){
-  const title = `Properties in ${params.slug} | Aman Realty`
+  const title = `Properties in ${params.slug} | @Reality`
   const description = `Explore current listings and market insights for ${params.slug}.`
   return { title, description }
 }

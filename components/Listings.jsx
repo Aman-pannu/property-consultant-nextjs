@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { getListings } from '@/lib/cms'
+import ListingDetailsModal from '@/components/ListingDetailsModal'
 
 export default async function Listings(){
   const listings = await getListings({ limit: 6 })
@@ -29,7 +30,7 @@ export default async function Listings(){
                   ))}
                 </div>
                 <div className="mt-6 flex gap-3">
-                  <a href={`/listings/${i.slug || i.id}`} className="rounded-xl bg-brand-600 px-4 py-2 text-white hover:bg-brand-700">Details</a>
+                  <ListingDetailsModal listing={i} />
                   {i.virtualTour && <a href={i.virtualTour} target="_blank" className="rounded-xl border border-slate-300 px-4 py-2 hover:bg-slate-50">Virtual Tour</a>}
                 </div>
               </div>

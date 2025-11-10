@@ -6,11 +6,15 @@ export default function Contact(){
 async function onSubmit(e){
     e.preventDefault()
     setStatus('Sending…')
-    const form = new FormData(e.currentTarget)
+    const formEl = e.currentTarget
+    const form = new FormData(formEl)
     const payload = Object.fromEntries(form.entries())
     const res = await fetch('/api/lead', { method:'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
     const data = await res.json()
-    if(res.ok){ setStatus('Thanks! I will be in touch shortly.'); e.currentTarget.reset() }
+    if(res.ok){ 
+      formEl?.reset();
+      setStatus('Thanks! I will be in touch shortly.'); 
+    }
     else { setStatus(data.error || 'Something went wrong. Please try again.') }
   }
   return (
@@ -19,7 +23,7 @@ async function onSubmit(e){
         <div>
           <h2 className="text-3xl font-bold">Book a free consultation</h2>
           <p className="mt-3 text-slate-600">Fill out the form and I’ll get back to you within one business hour.</p>
-          <form className="mt-8 grid gap-4" onSubmit={() => onSubmit()}>
+          <form className="mt-8 grid gap-4" onSubmit={onSubmit}>
             <div>
               <label className="block text-sm font-medium" htmlFor="name">Full name</label>
               <input required className="mt-1 w-full rounded-xl border border-slate-300 px-4 py-3" id="name" name="name" type="text" />

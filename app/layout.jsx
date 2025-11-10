@@ -1,6 +1,6 @@
 import './globals.css'
 export const metadata = {
-  title: 'Aman Realty | Property Consultant',
+  title: '@Reality | Property Consultant',
   description: 'Independent property consultant helping buyers and sellers across Melbourne.'
 }
 

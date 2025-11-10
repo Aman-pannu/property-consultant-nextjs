@@ -8,8 +8,8 @@ export default function Navbar(){
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex items-center justify-between h-16">
           <a href="#home" className="flex items-center gap-2 font-bold text-xl">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="text-brand-600"><path d="M12 3l9 8h-3v9H6v-9H3l9-8z"/></svg>
-            Aman Realty
+            {/* <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="text-brand-600"><path d="M12 3l9 8h-3v9H6v-9H3l9-8z"/></svg> */}
+            @Reality
           </a>
           <nav aria-label="Primary" className="hidden md:flex items-center gap-6 font-medium">
             <a className="hover:text-brand-700" href="#services">Services</a>

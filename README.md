@@ -1,5 +1,5 @@
 # 🏡 Property Consultant Website  
-**Built with Next.js + Tailwind + MongoDB**
+**Built with Next.js + Tailwind + Supabase**
 
 A production-ready, full-stack web application for property consultants.  
 Includes a client-facing website, admin dashboard, CRM-lite backend, and CMS integration for listings.
@@ -19,7 +19,7 @@ Includes a client-facing website, admin dashboard, CRM-lite backend, and CMS int
   - Conversion-focused landing page (hero, services, testimonials, listings, contact form)
 
 - **Backend**
-  - MongoDB (Mongoose) for storing leads
+  - Supabase (Postgres) for storing leads
   - API routes (`/api/lead`, `/api/leads`, `/api/leads/export`, `/api/leads/[id]`)
   - Lead capture validation & persistence
 
@@ -37,6 +37,7 @@ Includes a client-facing website, admin dashboard, CRM-lite backend, and CMS int
     - **Airtable**
     - **Notion**
     - **Sanity.io**
+    - **Supabase**
 
 - **Email Notifications**
   - Nodemailer integration
@@ -54,15 +55,17 @@ Includes a client-facing website, admin dashboard, CRM-lite backend, and CMS int
 ## 🛠️ Tech Stack
 
 - **Frontend:** Next.js 14, React 18, Tailwind CSS  
-- **Backend:** Next.js API routes, MongoDB + Mongoose  
+- **Backend:** Next.js API routes, Supabase (Postgres)  
 - **Auth:** HTTP Basic Auth (for admin and API routes)  
 - **Email:** Nodemailer  
 - **CMS Options:** Local JSON, Airtable, Notion, Sanity  
-- **Deployment:** Vercel, Render, or Docker + MongoDB Atlas  
+- **Deployment:** Vercel, Render, or Docker + Supabase  
 
 ---
 
 ## ⚡ Quick Start
+
+> Requires Node.js 20+ (use `nvm use` to match the `.nvmrc` file).
 
 ### 1. Clone & Install
 ```bash
@@ -75,7 +78,8 @@ npm install
 ### 2. Configure `.env`
 Update your environment variables:
 ```ini
-MONGODB_URI=mongodb://localhost:27017/property_consultant
+SUPABASE_URL=https://<your-project>.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 BASIC_AUTH_USER=admin
 BASIC_AUTH_PASS=changeme
 
@@ -87,7 +91,7 @@ SMTP_USER=you@example.com
 SMTP_PASS=your_app_password
 LEAD_TO=you@example.com
 
-# CMS provider: LOCAL | AIRTABLE | NOTION | SANITY
+# CMS provider: LOCAL | AIRTABLE | NOTION | SANITY | SUPABASE
 CMS_PROVIDER=LOCAL
 ```
 
@@ -104,10 +108,21 @@ Admin dashboard: [http://localhost:3000/admin](http://localhost:3000/admin)
 
 ## 📦 Production Deployment
 
-1. **MongoDB Atlas** – create a free cluster and use its URI in `.env`  
-2. **Vercel/Render/Netlify** – deploy the Next.js app  
-3. Add environment variables to hosting provider  
-4. Optional: use **Docker** with your preferred cloud host  
+1. **Supabase** – create a project and run the SQL in `supabase/migrations/*_create_leads.sql` and `supabase/migrations/*_create_listings.sql` (or `supabase db push`) to provision the tables.  
+2. Seed property listings by running `npm run sync:listings` (reads `content/listings.json`, upserts into `public.listings`).  
+3. Grab the project URL and **Service Role** key and place them in your environment variables.  
+4. **Vercel/Render/Netlify** – deploy the Next.js app and copy the env vars.  
+5. Optional: use **Docker** with your preferred cloud host.  
+
+### 📥 Seeding listings into Supabase
+
+If you switch `CMS_PROVIDER=SUPABASE`, run:
+
+```bash
+npm run sync:listings
+```
+
+This script loads `content/listings.json` and upserts each record into the `public.listings` table (matching on `slug`). Re-run anytime you update the JSON file.
 
 ---
 
