@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 export default function Contact(){
   const [status,setStatus] = useState('')
+  const mapSrc = process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_URL || 'https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=Melbourne+Australia'
 async function onSubmit(e){
     e.preventDefault()
     setStatus('Sending…')
@@ -61,8 +62,15 @@ async function onSubmit(e){
         </div>
         <div>
           <div className="aspect-[4/3] w-full rounded-3xl bg-slate-200"></div>
-          <div className="mt-4 aspect-[4/3] w-full rounded-3xl bg-slate-100 flex items-center justify-center text-slate-500">
-            <span>Map placeholder — replace with Google Maps embed.</span>
+          <div className="mt-4 aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-sm">
+            <iframe
+              title="Office map"
+              src={mapSrc}
+              className="h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
           </div>
         </div>
       </div>
